@@ -1,0 +1,3 @@
+Git Practice Notes
+
+Employee project created for Git practice.

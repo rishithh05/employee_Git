@@ -2,3 +2,5 @@ this is the controller class
 doing security checks here
 resolving without pull
 deleting the branch from both master and local
+
+using reflog getting the commit back

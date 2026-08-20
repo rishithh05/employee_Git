@@ -1,0 +1,16 @@
+Subject: [PATCH] remove delete/api
+---
+Index: EmployeeService.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/EmployeeService.txt b/EmployeeService.txt
+--- a/EmployeeService.txt	(revision d2ef53adbe3ee20d5ad62d91194828739eb19e16)
++++ b/EmployeeService.txt	(revision 8c6e991c0f8876ffb7e698af91e589b67a71d340)
+@@ -4,3 +4,4 @@
+ 
+ delete method is added
+ 
++doing cherry pick
+\ No newline at end of file

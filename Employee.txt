@@ -6,7 +6,7 @@ doing security checks here
 
 now i am going to do rebase a new branch into master
 
-reverting
+
 creating merge conflict
 
 doing fetch from remote to local

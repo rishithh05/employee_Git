@@ -73,15 +73,5 @@ public class EmployeeController {
         );
     }
 
-    // Delete Employee
-    @DeleteMapping("/{id}/delete")
-    public ResponseEntity<ApiResponse<Void>> deleteEmployee(
-            @PathVariable Long id) {
 
-        employeeService.deleteEmployee(id);
-
-        return ResponseEntity.ok(
-                ApiResponse.success("Employee deleted successfully", null)
-        );
-    }
 }

@@ -1,13 +1,87 @@
+package com.example.employee.controller;
 
+import com.example.employee.dto.ApiResponse;
+import com.example.employee.dto.EmployeeRequest;
+import com.example.employee.dto.EmployeeResponse;
+import com.example.employee.service.EmployeeService;
 
-this is employee.java class
+import jakarta.validation.Valid;
 
-doing security checks here
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-now i am going to do rebase a new branch into master
+import java.util.List;
 
+@RestController
+@RequestMapping("/api/v1/employees")
+public class EmployeeController {
 
-creating merge conflict
+    private final EmployeeService employeeService;
 
-doing fetch from remote to local
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService2 = employeeService2;
+    }
 
+    // Create Employee
+    @PostMapping
+    public ResponseEntity<ApiResponse<EmployeeResponse>> createEmployee(
+            @Valid @RequestBody EmployeeRequest request) {
+
+        EmployeeResponse employee = employeeService.createEmployee(request);
+
+        ApiResponse<EmployeeResponse> response =
+                ApiResponse.success("Employee created successfully", employee);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    // Get Employee by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<EmployeeResponse>> getEmployee(
+            @PathVariable Long id) {
+
+        EmployeeResponse employee = employeeService.getEmployeeById(id);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Employee retrieved successfully", employee)
+        );
+    }
+
+    // Get all Employees
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<EmployeeResponse>>> getAllEmployees() {
+
+        List<EmployeeResponse> employees = employeeService.getAllEmployees();
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Employees retrieved successfully", employees)
+        );
+    }
+
+    // Update Employee
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<EmployeeResponse>> updateEmployee(
+            @PathVariable Long id,
+            @Valid @RequestBody EmployeeRequest request) {
+
+        EmployeeResponse employee =
+                employeeService.updateEmployee(id, request);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Employee updated successfully", employee)
+        );
+    }
+
+    // Delete Employee
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Void>> deleteEmployee(
+            @PathVariable Long id) {
+
+        employeeService.deleteEmployee(id);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Employee deleted successfully", null)
+        );
+    }
+}
